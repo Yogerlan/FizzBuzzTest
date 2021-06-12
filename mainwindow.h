@@ -13,6 +13,7 @@ class MainWindow : public QWidget {
         QSpinBox *endSpinBox;
         void buildCppTest();
         void runCppTest();
+        void runPythonTest();
 };
 
 #endif  // MAIN_WINDOW_H_

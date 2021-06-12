@@ -55,6 +55,7 @@ MainWindow::MainWindow() {
 
     connect(buildCppTestButton, &QPushButton::clicked, this, &MainWindow::buildCppTest);
     connect(runCppTestButton, &QPushButton::clicked, this, &MainWindow::runCppTest);
+    connect(runPythonTestButton, &QPushButton::clicked, this, &MainWindow::runPythonTest);
 
     qhbLayout->addWidget(buildCppTestButton);
     qhbLayout->addWidget(runCppTestButton);
@@ -78,6 +79,22 @@ void MainWindow::runCppTest() {
     int start = startSpinBox->value();
     int end = endSpinBox->value();
     std::string command = std::string("gnome-terminal -- ./cpp/fb_test -f ") 
+        + std::to_string(fizz)
+        + std::string(" -b ")
+        + std::to_string(buzz)
+        + std::string(" -s ")
+        + std::to_string(start)
+        + std::string(" -e ")
+        + std::to_string(end);
+    system(command.data());
+}
+
+void MainWindow::runPythonTest() {
+    int fizz = fizzSpinBox->value();
+    int buzz = buzzSpinBox->value();
+    int start = startSpinBox->value();
+    int end = endSpinBox->value();
+    std::string command = std::string("gnome-terminal -- ./python/fb_test.py -f ") 
         + std::to_string(fizz)
         + std::string(" -b ")
         + std::to_string(buzz)

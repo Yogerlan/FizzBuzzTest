@@ -2,13 +2,15 @@
 #include <iostream>
 #include <limits>
 
-/*
- * FizzBuzz function accept 4 parameters:
+/**
+ * Prints the numbers from "start" to "end". But for multiples of "fizz" print
+ * "Fizz" instead of the number and for the multiples of "buzz" print "Buzz".
+ * For numbers which are multiples of both "fizz" and "buzz" print "FizzBuzz".
  *
- * fizz (int): prints "Fizz" if the list index is divisible by fizz
- * buzz (int): prints "Buzz" if the list index is divisible by buzz
- * start (int): starting iteration index
- * end (int): ending iteration index
+ * @param fizz Prints "Fizz" if the list index is divisible by "fizz".
+ * @param buzz Prints "Buzz" if the list index is divisible by "buzz".
+ * @param start Starting iteration index.
+ * @param end Ending iteration index.
  * 
  * The list can be filled in ascendent or descendent order.
  */
