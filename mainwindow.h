@@ -7,7 +7,12 @@ class MainWindow : public QWidget {
     public:
         MainWindow();
     private:
-        void cppTest();
+        QSpinBox *fizzSpinBox;
+        QSpinBox *buzzSpinBox;
+        QSpinBox *startSpinBox;
+        QSpinBox *endSpinBox;
+        void buildCppTest();
+        void runCppTest();
 };
 
 #endif  // MAIN_WINDOW_H_
