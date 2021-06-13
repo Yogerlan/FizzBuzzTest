@@ -30,3 +30,9 @@ Install also package dependencies inside **javascript** test folder.
 ```bash
 npm install
 ```
+
+### Install Java dependencies
+
+```bash
+sudo apt install default-jre default-jdk
+```

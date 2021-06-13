@@ -43,7 +43,6 @@ if __name__ == '__main__':
     end = 100
 
     # Get fizz, buzz, start & end params from command line arguments.
-    print(sys.argv)
     for a in range(1, len(sys.argv)):
         if sys.argv[a] == '-f':
             fizz = int(sys.argv[a + 1])
