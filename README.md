@@ -5,8 +5,28 @@ The **Fizz-Buzz test** is an interview question designed to help filter out the 
 
 ## Development guide (Ubuntu users)
 
-### Install dependencies
+### Install C/C++ dependencies
+
+```bash
+sudo apt install build-essential
+```
+
+### Install QT5 dependencies
 
 ```bash
 sudo apt install qt5-default
+```
+
+### Install JavaScript/TypeScript dependencies
+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt install nodejs
+sudo npm install -g typescript
+```
+
+Install also package dependencies inside **javascript** test folder.
+
+```bash
+npm install
 ```

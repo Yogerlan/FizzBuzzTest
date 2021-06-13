@@ -47,23 +47,29 @@ MainWindow::MainWindow() {
     QPushButton *buildCppTestButton = new QPushButton("Build C/C++ test");
     QPushButton *runCppTestButton = new QPushButton("Run C/C++ test");
     QPushButton *runPythonTestButton = new QPushButton("Run Python test");
+    QPushButton *buildNodejsTestButton = new QPushButton("Build Node.js test");
     QPushButton *runNodejsTestButton = new QPushButton("Run Node.js test");
     QPushButton *runJavaTestButton = new QPushButton("Run Java test");
 
-    QHBoxLayout *qhbLayout = new QHBoxLayout();
+    QHBoxLayout *cppQHBoxLayout = new QHBoxLayout();
+    QHBoxLayout *nodejsQHBoxLayout = new QHBoxLayout();
     QVBoxLayout *qvbLayout = new QVBoxLayout();
 
     connect(buildCppTestButton, &QPushButton::clicked, this, &MainWindow::buildCppTest);
     connect(runCppTestButton, &QPushButton::clicked, this, &MainWindow::runCppTest);
     connect(runPythonTestButton, &QPushButton::clicked, this, &MainWindow::runPythonTest);
+    connect(buildNodejsTestButton, &QPushButton::clicked, this, &MainWindow::buildNodejsTest);
+    connect(runNodejsTestButton, &QPushButton::clicked, this, &MainWindow::runNodejsTest);
 
-    qhbLayout->addWidget(buildCppTestButton);
-    qhbLayout->addWidget(runCppTestButton);
+    cppQHBoxLayout->addWidget(buildCppTestButton);
+    cppQHBoxLayout->addWidget(runCppTestButton);
+    nodejsQHBoxLayout->addWidget(buildNodejsTestButton);
+    nodejsQHBoxLayout->addWidget(runNodejsTestButton);
 
     qvbLayout->addWidget(parametersGroupBox);
-    qvbLayout->addLayout(qhbLayout);
+    qvbLayout->addLayout(cppQHBoxLayout);
     qvbLayout->addWidget(runPythonTestButton);
-    qvbLayout->addWidget(runNodejsTestButton);
+    qvbLayout->addLayout(nodejsQHBoxLayout);
     qvbLayout->addWidget(runJavaTestButton);
 
     setLayout(qvbLayout);
@@ -95,6 +101,26 @@ void MainWindow::runPythonTest() {
     int start = startSpinBox->value();
     int end = endSpinBox->value();
     std::string command = std::string("gnome-terminal -- ./python/fb_test.py -f ") 
+        + std::to_string(fizz)
+        + std::string(" -b ")
+        + std::to_string(buzz)
+        + std::string(" -s ")
+        + std::to_string(start)
+        + std::string(" -e ")
+        + std::to_string(end);
+    system(command.data());
+}
+
+void MainWindow::buildNodejsTest() {
+    system("gnome-terminal -- tsc ./javascript/fb_test.ts");
+}
+
+void MainWindow::runNodejsTest() {
+    int fizz = fizzSpinBox->value();
+    int buzz = buzzSpinBox->value();
+    int start = startSpinBox->value();
+    int end = endSpinBox->value();
+    std::string command = std::string("gnome-terminal -- node ./javascript/fb_test.js -f ") 
         + std::to_string(fizz)
         + std::string(" -b ")
         + std::to_string(buzz)

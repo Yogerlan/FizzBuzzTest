@@ -14,6 +14,8 @@ class MainWindow : public QWidget {
         void buildCppTest();
         void runCppTest();
         void runPythonTest();
+        void buildNodejsTest();
+        void runNodejsTest();
 };
 
 #endif  // MAIN_WINDOW_H_
