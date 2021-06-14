@@ -41,6 +41,7 @@ if __name__ == '__main__':
     buzz = 5
     start = 1
     end = 100
+    validate = False
 
     # Get fizz, buzz, start & end params from command line arguments.
     for a in range(1, len(sys.argv)):
@@ -52,10 +53,13 @@ if __name__ == '__main__':
             start = int(sys.argv[a + 1])
         if sys.argv[a] == '-e':
             end = int(sys.argv[a + 1])
+        if sys.argv[a] == '-v':
+            validate = True
 
     fizzbuzz(fizz, buzz, start, end)
 
-    try:
-        input('Press ENTER to continue...')
-    except:
-        pass
+    if not validate:
+        try:
+            input('Press ENTER to continue...')
+        except:
+            pass

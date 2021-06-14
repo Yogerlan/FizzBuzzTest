@@ -35,31 +35,37 @@ var fizz = 3;
 var buzz = 5;
 var start = 1;
 var end = 100;
+var validate = false;
 
 // Get fizz, buzz, start & end params from command line arguments.
 const argv = process.argv.slice(2);
 for (let a = 0; a < argv.length; a++) {
     if (argv[a] == '-f') {
-        fizz = argv[a + 1];
+        fizz = parseInt(argv[a + 1]);
     }
     if (argv[a] == '-b') {
-        buzz = argv[a + 1];
+        buzz = parseInt(argv[a + 1]);
     }
     if (argv[a] == '-s') {
-        start = argv[a + 1];
+        start = parseInt(argv[a + 1]);
     }
     if (argv[a] == '-e') {
-        end = argv[a + 1];
+        end = parseInt(argv[a + 1]);
+    }
+    if (argv[a] == '-v') {
+        validate = true;
     }
 }
 
 fizzbuzz(fizz, buzz, start, end);
 
-const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-});
-
-rl.question('Press ENTER to continue...', () => {
-    rl.close();
-});
+if (!validate) {
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout,
+    });
+    
+    rl.question('Press ENTER to continue...', () => {
+        rl.close();
+    });
+}

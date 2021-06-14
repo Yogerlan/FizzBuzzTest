@@ -38,6 +38,7 @@ int main(int argc, char *argv[]) {
     int buzz = 5;
     int start = 1;
     int end = 100;
+    bool validate = false;
 
     // Get fizz, buzz, start & end params from command line arguments.
     for (int a = 0; a < argc; a++) {
@@ -53,11 +54,16 @@ int main(int argc, char *argv[]) {
         if (std::strcmp(argv[a], "-e") == 0) {
             end = std::stoi(argv[a + 1]);
         }
+        if (std::strcmp(argv[a], "-v") == 0) {
+            validate = true;
+        }
     }
 
     fizzbuzz(fizz, buzz, start, end);
-    
-    std::cout << "Press ENTER to continue...";
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    if (!validate) {
+        std::cout << "Press ENTER to continue...";
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    }
     return 0;
 }

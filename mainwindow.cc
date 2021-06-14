@@ -3,6 +3,11 @@
 MainWindow::MainWindow() {
     setWindowTitle("FizzBuzz test");
 
+    // Display FizzBuzz.png image in a QLabel
+    QPixmap *fbPixmap = new QPixmap("FizzBuzz.png");
+    QLabel *fbLabel = new QLabel();
+    fbLabel->setPixmap(fbPixmap->scaled(fbPixmap->width() / 2, fbPixmap->height() / 2));
+
     // Display parameters controls in a QGroupBox with QGridLayout
     QGroupBox *parametersGroupBox = new QGroupBox("Parameters");
 
@@ -67,6 +72,7 @@ MainWindow::MainWindow() {
     nodejsQHBoxLayout->addWidget(buildNodejsTestButton);
     nodejsQHBoxLayout->addWidget(runNodejsTestButton);
 
+    qvbLayout->addWidget(fbLabel);
     qvbLayout->addWidget(parametersGroupBox);
     qvbLayout->addLayout(cppQHBoxLayout);
     qvbLayout->addWidget(runPythonTestButton);

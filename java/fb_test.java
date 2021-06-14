@@ -36,6 +36,7 @@ public class FizzBuzzTest {
         int buzz = 5;
         int start = 1;
         int end = 100;
+        boolean validate = false;
 
         // Get fizz, buzz, start & end params from command line arguments.
         for (int a = 0; a < args.length; a++) {
@@ -51,12 +52,17 @@ public class FizzBuzzTest {
             if (args[a].equals("-e")) {
                 end = Integer.parseInt(args[a + 1]);
             }
+            if (args[a].equals("-v")) {
+                validate = true;
+            }
         }
 
         fizzbuzz(fizz, buzz, start, end);
 
-        System.out.print("Press ENTER to continue...");
-        System.console().readLine();
+        if (!validate) {
+            System.out.print("Press ENTER to continue...");
+            System.console().readLine();
+        }
     }
 
 }
